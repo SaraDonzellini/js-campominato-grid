@@ -1,14 +1,28 @@
-const buttonPlay = document.querySelector(".btn")
+const buttonPlay = document.querySelector(".btn");
 
 buttonPlay.addEventListener('click', function () {
-  const divBoxElement = document.querySelector(".box")
-  let newSquare;
+  const divBoxElement = document.querySelector(".box");
   for (let i = 0; i < 100; i++) {
-    newSquare = document.createElement("div")
-    newSquare.classList.add('square')
-    divBoxElement.appendChild(newSquare)
-    newSquare.append(i + 1)
+    const newSquare = getNewSquare();
+    divBoxElement.appendChild(newSquare);
+    newSquare.append(i + 1);
   }
-
-
+  
 })
+
+
+
+
+
+
+
+
+function getNewSquare() {
+  const newSquare = document.createElement("div");
+  newSquare.classList.add('square');
+
+  newSquare.addEventListener("click", function () {
+    newSquare.classList.toggle('clicked');
+  })
+  return newSquare;
+}
